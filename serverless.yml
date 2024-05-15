@@ -1,0 +1,12 @@
+service: deadmans-switch-lambda
+provider:
+  name: aws
+  runtime: nodejs20.x
+  region: eu-central-1
+functions:
+  app:
+    handler: dist/app.handler
+    role: arn:aws:iam::387921183077:role/service-role/user-management-role-4y2txf98
+    events:
+      - http: ANY /
+      - http: ANY /{proxy+}
